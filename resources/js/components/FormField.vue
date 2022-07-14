@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import moment from 'moment';
 import DateRangePicker from './DateRangePicker'
 import { FormField, HandlesValidationErrors } from 'laravel-nova'
 
