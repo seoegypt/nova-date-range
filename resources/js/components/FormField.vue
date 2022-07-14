@@ -24,10 +24,10 @@
 
 <script>
 import DateRangePicker from './DateRangePicker'
-import { FormField, HandlesValidationErrors, InteractsWithDates } from 'laravel-nova'
+import { FormField, HandlesValidationErrors } from 'laravel-nova'
 
 export default {
-    mixins: [HandlesValidationErrors, FormField, InteractsWithDates],
+    mixins: [HandlesValidationErrors, FormField],
     components: { DateRangePicker },
 
     computed: {
@@ -39,7 +39,7 @@ export default {
         },
         firstDayOfWeek() {
             return this.field.firstDayOfWeek || 0;
-        },        
+        },
         placeholder() {
             return moment().format('YYYY-MM-DD') + ` ${this.field.seperator} ` + moment().format('YYYY-MM-DD')
         },
