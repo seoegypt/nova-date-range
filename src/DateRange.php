@@ -60,7 +60,10 @@ class DateRange extends Field
         $fromValue = data_get($resource, $from);
         $toValue = data_get($resource, $to);
 
-        return $fromValue ? ($fromValue->toDateString()." $this->seperator ".($toValue ? $toValue->toDateString() : '/')) : null;
+        if (!empty($toValue)) {
+            return $fromValue ? ($fromValue->toDateString() . " $this->seperator " . ($toValue ? $toValue->toDateString() : '/')) : null;
+        }
+        return $fromValue ? $fromValue->toDateString() : null;
     }
 
     /**
@@ -74,13 +77,13 @@ class DateRange extends Field
         return $this->withMeta(['format' => $format]);
     }
 
-	/**
-	 * Indicate that the field should be nullable.
-	 *
-	 * @param  bool $nullable
-	 * @param  array|Closure $values
-	 * @return $this
-	 */
+    /**
+     * Indicate that the field should be nullable.
+     *
+     * @param  bool $nullable
+     * @param  array|Closure $values
+     * @return $this
+     */
     public function nullable($nullable = true, $values = null)
     {
         return $this->withMeta(['nullable' => $nullable]);
@@ -131,7 +134,7 @@ class DateRange extends Field
         if ($attribute === null) {
             return [null, null];
         }
-        
+
         return array_pad(explode(" $this->seperator ", $attribute), 2, null);
     }
 }
