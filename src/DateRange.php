@@ -54,7 +54,7 @@ class DateRange extends Field
     /**
      * @inheritdoc
      */
-    protected function resolveAttribute($resource, $attribute)
+    protected function resolveAttribute($resource,string $attribute)
     {
         [$from, $to] = $this->parseAttribute($attribute);
         $fromValue = data_get($resource, $from);
